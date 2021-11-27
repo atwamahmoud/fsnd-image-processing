@@ -9,11 +9,16 @@
     "build": "npx tsc",
     "jasmine": "jasmine",
     "dev": "nodemon",
-    "test": "npm run build && npm run jasmine"
+    "test": "npm run build && npm run jasmine",
+    "lint": "eslint . --ext ts",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --write"
   },
   "devDependencies": {
     "@types/jasmine": "^3.10.2",
     "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",

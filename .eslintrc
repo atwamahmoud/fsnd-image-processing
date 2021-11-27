@@ -1,99 +1,89 @@
 {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "sourceType": "module",
-      "project": "./tsconfig.json",
-      "ecmaFeatures": {
-        "jsx": false
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["unicorn", "prettier", "@typescript-eslint", "import-path"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "prettier/prettier": "error",
+
+    "sort-imports": [
+      0,
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["all", "single", "multiple", "none"]
       }
-    },
-    "plugins": [
-      "unicorn",
-      "prettier",
-      "@typescript-eslint",
-      "import-path"
     ],
-    "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
-    "rules": {
-      "prettier/prettier": "error",
-  
-      "sort-imports": [
-        0,
+
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase"],
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+
+      //Enforce camelCase for variables &  forbid Underscores & beginning & end
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+
+      //Enforce Type Generics (e.g. TArr in Array<TArr>) to be prefixed with T
+      {
+        "selector": "typeParameter",
+        "format": ["PascalCase"],
+        "prefix": ["T"]
+      },
+
+      //Enforce that class, interface, typeAlias, enum & typeParameter are PascalCase
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+
+      //Enforce Interfaces to start with "I" letter
+      {
+        "selector": "interface",
+        "format": ["PascalCase"]
+      }
+    ],
+
+    // Doesn't match the case of : import Footer from './Footer/Footer';
+    "import-path/forbidden": [
+      "error",
+      [
         {
-          "ignoreCase": false,
-          "ignoreMemberSort": false,
-          "memberSyntaxSortOrder": ["all", "single", "multiple", "none"]
+          "match": "/index$",
+          "message": "Index on the end of path is redundant"
+        },
+        {
+          "match": "(w+)/\\1",
+          "message": "Check Component Naming in the style guide."
         }
-      ],
-  
-  
-      "@typescript-eslint/naming-convention": [
-        "error",
-        {
-          "selector": "default",
-          "format": ["camelCase"],
-          "leadingUnderscore": "forbid",
-          "trailingUnderscore": "forbid"
-        },
-  
-        //Enforce camelCase for variables &  forbid Underscores & beginning & end
-        {
-          "selector": "variable",
-          "format": ["camelCase", "UPPER_CASE", "PascalCase"],
-          "leadingUnderscore": "forbid",
-          "trailingUnderscore": "forbid"
-        },
-  
-        //Enforce Type Generics (e.g. TArr in Array<TArr>) to be prefixed with T
-        {
-          "selector": "typeParameter",
-          "format": ["PascalCase"],
-          "prefix": ["T"]
-        },
-  
-        //Enforce that class, interface, typeAlias, enum & typeParameter are PascalCase
-        {
-          "selector": "typeLike",
-          "format": ["PascalCase"]
-        },
-  
-        //Enforce Interfaces to start with "I" letter
-        {
-          "selector": "interface",
-          "format": ["PascalCase"]
-        }
-      ],
-  
-      // Doesn't match the case of : import Footer from './Footer/Footer';
-      "import-path/forbidden": [
-        "error",
-        [
-          {
-            "match": "/index$",
-            "message": "Index on the end of path is redundant"
-          },
-          {
-            "match": "(w+)/\\1",
-            "message": "Check Component Naming in the style guide."
-          }
-        ]
-      ],
-    
-      //Extra...
-      "no-magic-numbers": [
-        "error",
-        {
-          "ignore": [-1, 0, 1]
-        }
-      ],
-      "no-duplicate-imports": "error",
-      "space-before-blocks": "error",
-      "no-mixed-spaces-and-tabs": "error",
-      "no-extra-boolean-cast": "error"
-  
-    }
+      ]
+    ],
+
+    //Extra...
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [-1, 0, 1]
+      }
+    ],
+    "no-duplicate-imports": "error",
+    "space-before-blocks": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-extra-boolean-cast": "error"
   }
+}
