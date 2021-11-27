@@ -1,0 +1,32 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "An API for resizing and generating images",
+  "main": "index.js",
+  "author": "Mahmoud Atwa <mahmoudatwa4@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc",
+    "jasmine": "jasmine",
+    "dev": "nodemon",
+    "test": "npm run build && npm run jasmine"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.10.2",
+    "@types/node": "^16.11.10",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import-path": "^0.0.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unicorn": "^39.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "jasmine": "^3.10.0",
+    "jasmine-spec-reporter": "^7.0.0"
+  }
+}
