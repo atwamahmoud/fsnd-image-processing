@@ -1,4 +1,4 @@
-import {rm} from "fs/promises";
+import {cp, rm} from "fs/promises";
 import {CACHE_DIR, IMG_DIR} from "../../utils/constants";
 import {getFilePath} from "../../utils/getFilePath";
 import {initDirs} from "../../utils/initDir";
@@ -17,6 +17,16 @@ describe("directories are initialized correctly", () => {
         });
       }),
     );
+  });
+  afterAll(async () => {
+    await rm(getFilePath("", IMG_DIR), {
+      recursive: true,
+      force: true,
+    });
+    await cp(getFilePath("", `${IMG_DIR}_copy`), IMG_DIR, {
+      recursive: true,
+      force: true,
+    });
   });
   it("CACHE_DIR is created if it doesn't exist", async () => {
     const dirPath = getFilePath("", CACHE_DIR);

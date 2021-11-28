@@ -68,7 +68,7 @@ describe("Test /resize endpoint returns 400 for incorrect dimensions", () => {
   });
 });
 
-describe("Test /placeholder endpoint returns 404 for incorrect files", () => {
+describe("Test /resize endpoint returns 404 for incorrect files", () => {
   it("Returns 404 when file couldn't be found", async () => {
     const response = await request.get("/resize?filename=file_that_doesnt_exisit&height=250&width=250");
     expect(response.statusCode).toBe(HttpCodes.notFound);
