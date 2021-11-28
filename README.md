@@ -83,7 +83,3 @@ It compresses the file on the fly
 ##### Example
 
 `GET http://localhost:8080/resize?width=250&height=250&filename=scandanavia-01.jpeg&type=webp`
-
-
-### Notes
-1. Make sure to use a browser or otherwise make sure your request is encoded correctly
