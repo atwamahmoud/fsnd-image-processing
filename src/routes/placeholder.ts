@@ -1,18 +1,17 @@
 import {Router} from "express";
-import validateColor from "validate-color";
 import {createSVGString} from "../lib/svgString";
 import {BAD_REQUEST, HTTP_CODES} from "../utils/constants";
-import {validateIntAsString} from "../utils/validators";
+import {validateIntAsString, validateSupportedColor} from "../utils/validators";
 
 const placeholderRouter = Router();
 
 placeholderRouter.use("/", (req, res, next) => {
   const {width, height, bgColor, textColor} = req.query as Record<string, string>;
   try {
-    validateColor(textColor);
-    validateColor(bgColor);
-    validateIntAsString("width", width);
-    validateIntAsString("height", height);
+    validateSupportedColor(textColor, "textColor");
+    validateSupportedColor(bgColor, "bgColor");
+    validateIntAsString(width, "width");
+    validateIntAsString(height, "height");
   } catch (error: unknown) {
     const castedError = error as Error;
     if (castedError.name === BAD_REQUEST) {
