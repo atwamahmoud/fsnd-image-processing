@@ -16,3 +16,5 @@ export const IMG_DIR = process.env.IMAGES_DIR || "images";
 export const CACHE_DIR = process.env.CACHE_DIR || "cache";
 
 export const CACHE_FILENAME_SLASH_ESCAPER = "{{slash}}";
+
+export const HTTP_ERROR_NAME = "HTTP_ERROR";

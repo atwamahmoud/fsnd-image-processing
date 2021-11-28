@@ -2,8 +2,9 @@ import {Request, Response, NextFunction} from "express";
 import {HttpCodes} from "../utils/constants";
 import {HTTPError} from "../utils/HTTPError";
 
-export function errorHandlerMiddleware(req: Request, res: Response, next: NextFunction): void {
+export function errorWrapper(req: Request, res: Response, next: NextFunction, func: () => void): void {
   try {
+    func();
     next();
   } catch (error: unknown) {
     const castedError = error as HTTPError;

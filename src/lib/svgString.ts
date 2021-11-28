@@ -2,7 +2,7 @@ import {IImageData} from "../interfaces/Image";
 import {DEFAULT_SVG_BG_COLOR, DEFAULT_SVG_TEXT_COLOR} from "../utils/constants";
 
 /**
- * @description Generates a blank svg image according to the input dimensions
+ * @description Generates an svg image according to the input data
  * @param {IImageData} imageData
  * @param {number} imageData.width Image Width in pixels
  * @param {number} imageData.height Image height in pixels
