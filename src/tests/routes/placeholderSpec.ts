@@ -1,27 +1,27 @@
 import supertest from "supertest";
 import {app} from "../..";
-import {HTTP_CODES} from "../../utils/constants";
+import {HttpCodes} from "../../utils/constants";
 
 const request = supertest(app);
 describe("Test /placeholder endpoint returns 404 for methods other than GET", () => {
   it("Returns 404 for POST", async (done) => {
     const response = await request.post("/placeholder");
-    expect(response.status).toBe(HTTP_CODES.notFound);
+    expect(response.status).toBe(HttpCodes.notFound);
     done();
   });
   it("Returns 404 for PUT", async (done) => {
     const response = await request.put("/placeholder");
-    expect(response.status).toBe(HTTP_CODES.notFound);
+    expect(response.status).toBe(HttpCodes.notFound);
     done();
   });
   it("Returns 404 for DELETE", async (done) => {
     const response = await request.delete("/placeholder");
-    expect(response.status).toBe(HTTP_CODES.notFound);
+    expect(response.status).toBe(HttpCodes.notFound);
     done();
   });
   it("Returns 404 for PATCH", async (done) => {
     const response = await request.patch("/placeholder");
-    expect(response.status).toBe(HTTP_CODES.notFound);
+    expect(response.status).toBe(HttpCodes.notFound);
     done();
   });
 });
@@ -34,7 +34,7 @@ describe("Test /placeholder endpoint returns 400 for incorrect dimensions", () =
       request.get("/placeholder?width=?height=250"),
       request.get("/placeholder?width= ?height=250"),
     ]);
-    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HTTP_CODES.badRequest));
+    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HttpCodes.badRequest));
     done();
   });
   it("Returns 400 when height is invalid", async (done) => {
@@ -45,7 +45,7 @@ describe("Test /placeholder endpoint returns 400 for incorrect dimensions", () =
       request.get("/placeholder?height=?width=250"),
       request.get("/placeholder?height= ?width=250"),
     ]);
-    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HTTP_CODES.badRequest));
+    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HttpCodes.badRequest));
     done();
   });
 });
@@ -60,7 +60,7 @@ describe("Test /placeholder endpoint returns 400 for incorrect colors", () => {
       request.get("/placeholder?height=250&width=250&bgColor=#ff"),
       request.get("/placeholder?height=250&width=250&bgColor=rgb(, 33, 1)"),
     ]);
-    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HTTP_CODES.badRequest));
+    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HttpCodes.badRequest));
     done();
   });
   it("Returns 400 when textColor is invalid", async (done) => {
@@ -72,7 +72,7 @@ describe("Test /placeholder endpoint returns 400 for incorrect colors", () => {
       request.get("/placeholder?height=250&width=250&textColor=#ff"),
       request.get("/placeholder?height=250&width=250&textColor=rgb(, 33, 1)"),
     ]);
-    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HTTP_CODES.badRequest));
+    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HttpCodes.badRequest));
     done();
   });
 });
@@ -90,7 +90,7 @@ describe("Test /placeholder endpoint returns 200 with correct header for valid r
       request.get("/placeholder?height=250&width=250&textColor=#fff"),
       request.get("/placeholder?height=250&width=250"),
     ]);
-    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HTTP_CODES.ok));
+    expect(responses.map((resp) => resp.statusCode)).toEqual(new Array(responses.length).fill(HttpCodes.ok));
     done();
   });
 });

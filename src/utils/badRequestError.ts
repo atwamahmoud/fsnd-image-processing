@@ -1,8 +1,9 @@
-import {BAD_REQUEST, DEFAULT_BAD_REQUEST_ERROR_MSG} from "./constants";
+import {BAD_REQUEST, DEFAULT_BAD_REQUEST_ERROR_MSG, HttpCodes} from "./constants";
+import {HTTPError} from "./HTTPError";
 
-export class BadRequestError extends Error {
+export class BadRequestError extends HTTPError {
   constructor(msg?: string) {
-    super(msg || DEFAULT_BAD_REQUEST_ERROR_MSG);
+    super(HttpCodes.badRequest, msg || DEFAULT_BAD_REQUEST_ERROR_MSG);
     this.name = BAD_REQUEST;
   }
 }
