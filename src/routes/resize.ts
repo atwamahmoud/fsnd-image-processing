@@ -21,7 +21,12 @@ resizeRouter.get("/", dimensionValidatorMiddleware, pathValidatorMiddleware, asy
   const cacheFileCanBeAccessed = await validateFileCanBeAccessed(cacheFilePath);
   if (cacheFileCanBeAccessed) {
     const buffer = await readFile(cacheFilePath);
-    return res.status(HttpCodes.ok).end(buffer);
+    let bufferToSend: Buffer;
+    if (type === "webp") bufferToSend = await imageToWebP(buffer);
+    else if (type === "png") bufferToSend = await imageToPng(buffer);
+    else bufferToSend = await imageToJpeg(buffer);
+    res.header("Content-Type", `image/${type || "jpeg"}`);
+    return res.status(HttpCodes.ok).end(bufferToSend);
   }
 
   const filepath = getFilePath(filename || "", IMG_DIR);

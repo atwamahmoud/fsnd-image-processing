@@ -1,6 +1,6 @@
-import {createSVGString} from "../lib/svgString";
+import {createSVGString} from "../../lib/svgString";
 import cheerio from "cheerio";
-import {DEFAULT_SVG_BG_COLOR, DEFAULT_SVG_TEXT_COLOR} from "../utils/constants";
+import {DEFAULT_SVG_BG_COLOR, DEFAULT_SVG_TEXT_COLOR} from "../../utils/constants";
 
 describe("SVG string generation", () => {
   it("Creates string with correct dimensions", () => {
