@@ -7,4 +7,6 @@ export const DEFAULT_BAD_REQUEST_ERROR_MSG = "Invalid request parameters, please
 export const HTTP_CODES = {
   badRequest: 400,
   serverError: 500,
+  notFound: 404,
+  ok: 200,
 };
