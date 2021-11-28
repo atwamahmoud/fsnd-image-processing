@@ -1,4 +1,4 @@
-import {cp, rename} from "fs/promises";
+import {cp} from "fs/promises";
 import sharp from "sharp";
 import supertest from "supertest";
 import {app} from "../..";

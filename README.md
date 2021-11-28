@@ -2,6 +2,8 @@
 
 > Part of Udacity's Full-Stack nanodegree
 
+**NOTE** While using hex colors make sure to encode `#` as `%23` since the hash symbol is used by the browser! 
+
 ## Setup
 
 1. To install required dependencies run `npm i` or `yarn`
@@ -44,7 +46,7 @@ A CSS supported color to be applied on the background of the placeholder image
 A CSS supported color to be applied on the text of the placeholder image
 
 #### Example
-`GET http://localhost:8080/placeholder?width=250&height=250&textColor=#e5e5e5`
+`GET http://localhost:8080/placeholder?width=250&height=250&textColor=%23e5e5e5`
 
 
 #### `text`
@@ -52,7 +54,7 @@ A CSS supported color to be applied on the text of the placeholder image
 A string containing the text to be in the image
 
 #### Example
-`GET http://localhost:8080/placeholder?width=250&height=250&textColor=#e5e5e5&text=Hello, World!`
+`GET http://localhost:8080/placeholder?width=250&height=250&textColor=%23e5e5e5&text=Hello, World!`
 
 
 ## Testing the Resizer API
