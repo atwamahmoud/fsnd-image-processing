@@ -1,10 +1,7 @@
-import {cp} from "fs/promises";
 import sharp from "sharp";
 import supertest from "supertest";
 import {app} from "../..";
-import {HttpCodes, IMG_DIR} from "../../utils/constants";
-import {getFilePath} from "../../utils/getFilePath";
-import {initDirs} from "../../utils/initDir";
+import {HttpCodes} from "../../utils/constants";
 
 const request = supertest(app);
 describe("Test /resize endpoint returns 404 for methods other than GET", () => {
