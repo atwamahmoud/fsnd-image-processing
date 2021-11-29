@@ -76,14 +76,11 @@ describe("Test /resize endpoint returns 404 for incorrect files", () => {
 });
 
 describe("Test /resize endpoint sends correct responses for valid requests", () => {
-  const filename = "testing_image_do_not_delete.jpeg";
+  const filename = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png";
   const width = 250;
   const height = 250;
-  const url = `/resize?filename=${filename}&width=${width}&height=${height}`;
-  beforeAll(async () => {
-    initDirs();
-    await cp(getFilePath(filename, ""), getFilePath(filename, IMG_DIR));
-  });
+  const url = `/resize?url=${filename}&width=${width}&height=${height}`;
+
   it("Returns jpeg as default encoding", async () => {
     const response = await request.get(url).responseType("arrayBuffer");
     const metadata = await sharp(response.body).metadata();
